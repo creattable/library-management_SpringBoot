@@ -1,0 +1,4 @@
+spring:
+  profiles:
+#    选择环境
+    active: test

@@ -1,0 +1,19 @@
+
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+C
+base-common/pom.xml,f\0\f01093ebe6e9d41fa2a773552aecf321627c74bc
+9
+	README.MD,9\6\968e80af9562e09cebe594968b130076952eafe1
+@
+base-web/pom.xml,1\0\10bffe9e2f152f92b02b7f847de763b380f159e1
+t
+Dbase-web/src/main/java/com/qin/config/mybatis/MyBatisPlusConfig.java,0\6\061093d1d618c3f5f5a86e4e55172ef30ccffe59
+e
+5base-common/src/main/java/com/qin/utils/ResultVo.java,a\a\aad9653dace49e280eda46d9d24cf2a9df57da89
+h
+8base-common/src/main/java/com/qin/status/StatusCode.java,5\c\5cc1e63b401cff7b6b5a3deca69df3edbc366026
+h
+8base-common/src/main/java/com/qin/utils/ResultUtils.java,0\e\0e133766034713523aa186793ff6660962069549
+d
+4base-web/src/main/java/com/qin/BooksApplication.java,d\a\daafee8270979d075a5104e7c1de8d0f2af6059b
