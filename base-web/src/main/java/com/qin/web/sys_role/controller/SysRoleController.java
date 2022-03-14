@@ -27,7 +27,7 @@ public class SysRoleController {
     //新增
     @PostMapping
     public ResultVo addRole(@RequestBody SysRole role){
-        role.setCreatedTime(new Date());
+        role.setCreateTime(new Date());
         boolean save = SysRoleService.save(role);
         if(save){
             return ResultUtils.success("新增角色成功！");
@@ -40,7 +40,7 @@ public class SysRoleController {
     //编辑
     @PutMapping
     public ResultVo editRole(@RequestBody SysRole role){
-        role.setUpdatedTime(new Date());
+        role.setUpdateTime(new Date());
         boolean save = SysRoleService.updateById(role);
         if(save){
             return ResultUtils.success("编辑角色成功！");

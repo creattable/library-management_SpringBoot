@@ -16,12 +16,12 @@ import java.util.Date;
 @TableName("sys_role")
 public class SysRole {
     @TableId(type = IdType.AUTO)
-    private long roleId;
+    private Long roleId;
     private String roleName;
     private String roleType;
-    private String remake;
-    private Date createdTime;
-    private Date updatedTime;
+    private String remark;
+    private Date createTime;
+    private Date updateTime;
     
     
 }
