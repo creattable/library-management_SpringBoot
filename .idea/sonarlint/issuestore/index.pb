@@ -41,5 +41,7 @@ w
 Gbase-web/src/main/java/com/qin/web/sys_role/service/SysRoleService.java,3\4\3462f85bbb034c1600479fe9e0218262ebe1e850
 o
 ?base-web/src/main/java/com/qin/web/sys_role/entity/SysRole.java,1\5\158de23207710dd4c2d2fc55a1c1de554808bf7f
+u
+Ebase-web/src/main/java/com/qin/web/sys_menu/mapper/SysMenuMapper.java,c\e\ced7e02917e760bed2e77fe841269ae6c6d539fb
 }
 Mbase-web/src/main/java/com/qin/web/sys_role/controller/SysRoleController.java,1\7\178221a6e4119a9ddb7be9f0788296ffbd7f28a6
