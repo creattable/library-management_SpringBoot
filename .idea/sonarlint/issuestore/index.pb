@@ -33,15 +33,13 @@ p
 @base-web/src/main/java/com/qin/web/sys_user/entity/PageParm.java,8\d\8d13bef351c4797a2943393cbbb030ba5ef1e7ca
 w
 Gbase-web/src/main/java/com/qin/web/sys_user/service/SysUserService.java,0\6\0608afad16526de630aaf32fbb7ef28617d12b3f
-p
-@base-web/src/main/java/com/qin/web/sys_role/entity/RoleParm.java,e\9\e9c9b6bee9d347ba6dde028bd9521b6bae58f400
 €
 Pbase-web/src/main/java/com/qin/web/sys_role/service/impl/SysRoleServiceImpl.java,a\e\ae15274e4f2ba2b9c810dce6e61aa964ae9dcf27
 w
 Gbase-web/src/main/java/com/qin/web/sys_role/service/SysRoleService.java,3\4\3462f85bbb034c1600479fe9e0218262ebe1e850
-o
-?base-web/src/main/java/com/qin/web/sys_role/entity/SysRole.java,1\5\158de23207710dd4c2d2fc55a1c1de554808bf7f
 u
 Ebase-web/src/main/java/com/qin/web/sys_menu/mapper/SysMenuMapper.java,c\e\ced7e02917e760bed2e77fe841269ae6c6d539fb
 }
 Mbase-web/src/main/java/com/qin/web/sys_role/controller/SysRoleController.java,1\7\178221a6e4119a9ddb7be9f0788296ffbd7f28a6
+p
+@base-web/src/main/java/com/qin/web/sys_menu/entity/MakeTree.java,6\3\630aa45a186b5898154a7c6db86493ed76855f25
