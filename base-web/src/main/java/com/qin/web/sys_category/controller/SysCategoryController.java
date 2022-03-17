@@ -9,6 +9,8 @@ import com.qin.web.sys_category.service.SysCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @author 秦家乐
  * @date 2022/3/17 12:26
@@ -56,6 +58,15 @@ public class SysCategoryController {
     @GetMapping("/list")
     public ResultVo getList(ListCateParm parm){
         IPage<SysCategory> list = sysCategoryService.getList(parm);
+        return ResultUtils.success("查询成功",list);
+    
+    }
+    
+    
+    //图书列表的分类，让其他(图书列表)可以完成图书分类中的查询
+    @GetMapping("/cateList")
+    public ResultVo getCateList(){
+        List<SysCategory> list = sysCategoryService.list();
         return ResultUtils.success("查询成功",list);
     
     }
