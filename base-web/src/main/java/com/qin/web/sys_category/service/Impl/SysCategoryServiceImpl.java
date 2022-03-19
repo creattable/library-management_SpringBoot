@@ -22,7 +22,7 @@ public class SysCategoryServiceImpl extends ServiceImpl<SysCategoryMapper, SysCa
     @Override
     public IPage<SysCategory> getList(ListCateParm parm) {
         //构造分页对象
-        //查询的时候，比如要出啊日奴当前页和每页的限制，并且用page来进行new
+        //查询的时候，需要当前页和每页的限制，并且用page来进行new
         IPage<SysCategory> page = new Page<>();
         page.setSize(parm.getPageSize());
         page.setCurrent(parm.getCurrentPage());
