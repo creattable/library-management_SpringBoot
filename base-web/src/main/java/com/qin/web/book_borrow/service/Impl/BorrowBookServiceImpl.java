@@ -1,11 +1,12 @@
 package com.qin.web.book_borrow.service.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.qin.exception.BusinessException;
 import com.qin.exception_advice.BusinessExceptionEnum;
-import com.qin.web.book_borrow.entity.BorrowBook;
-import com.qin.web.book_borrow.entity.BorrowParm;
+import com.qin.web.book_borrow.entity.*;
 import com.qin.web.book_borrow.mapper.BorrowBookMapper;
 import com.qin.web.book_borrow.service.BorrowBookService;
 import com.qin.web.sys_books.entity.SysBooks;
@@ -42,7 +43,7 @@ public class BorrowBookServiceImpl extends ServiceImpl<BorrowBookMapper, BorrowB
         try {
             
             //构造查询条件，先查出符合的书
-            QueryWrapper<SysBooks> query =new QueryWrapper();
+            QueryWrapper<SysBooks> query = new QueryWrapper();
             query.lambda().in(SysBooks::getBookId, parm.getBookIds());
             List<SysBooks> list = sysBooksService.list(query);
             
@@ -53,24 +54,24 @@ public class BorrowBookServiceImpl extends ServiceImpl<BorrowBookMapper, BorrowB
             //这一行代码的作用是查询出里面库存小于1的
             List<SysBooks> collect = list.stream().filter(item -> item.getBookStore().longValue() < 1L).collect(Collectors.toList());
             //大于0表示查询到数据了
-            if(collect.size()>0){
+            if (collect.size() > 0) {
                 //提示那本书库存不足
                 //通过map中的getBookName，作为k来获取v
                 List<String> stringList = collect.stream().map(SysBooks::getBookName).collect(Collectors.toList());
                 //自定义的异常，code和message，然后就抛出去不向后走了
                 throw new BusinessException(BusinessExceptionEnum.NO_STOCK.getCode(),
-                        stringList+ BusinessExceptionEnum.NO_STOCK.getMessage());
+                        stringList + BusinessExceptionEnum.NO_STOCK.getMessage());
             }
-    
+            
             //减少库存，插入借书明细
             List<Long> bookIds = parm.getBookIds();
             //试试forEach和for
-            for(int i=0;i<bookIds.size();i++){
-                Long bookId=bookIds.get(i);
+            for (int i = 0; i < bookIds.size(); i++) {
+                Long bookId = bookIds.get(i);
                 //减库存
-                int res= sysBooksService.subBook(bookId);
+                int res = sysBooksService.subBook(bookId);
                 //如果>0才表示减少成功
-                if(res>0){
+                if (res > 0) {
                     BorrowBook borrowBook = new BorrowBook();
                     borrowBook.setBookId(bookId);
                     borrowBook.setReaderId(parm.getReaderId());
@@ -85,12 +86,40 @@ public class BorrowBookServiceImpl extends ServiceImpl<BorrowBookMapper, BorrowB
             }
             
             
-            
-            
         } finally {
             //释放锁
             lock.unlock();
             
+        }
+        
+        
+    }
+    
+    @Override
+    public IPage<ReturnBook> getBorrowList(ListParm parm) {
+        //构造分页对象
+        Page<ReturnBook> page = new Page<>();
+        page.setCurrent(parm.getCurrentPage());
+        page.setSize(parm.getPageSize());
+        
+        return this.baseMapper.getBorrowList(page, parm);
+    }
+    
+    @Override
+    @Transactional
+    public void returnBook(List<ReturnParm> list) {
+        //加库存，变更借书状态
+        for (int i = 0; i < list.size(); i++) {
+            //加库存
+            int res = sysBooksService.addBook(list.get(i).getBookId());
+            if(res>0){
+                //变更借书状态
+                BorrowBook borrowBook=new BorrowBook();
+                borrowBook.setBorrowId(list.get(i).getBorrowId());
+                borrowBook.setBorrowStatus("2");//2代表已还
+                this.baseMapper.updateById(borrowBook);
+                
+            }
         }
         
         

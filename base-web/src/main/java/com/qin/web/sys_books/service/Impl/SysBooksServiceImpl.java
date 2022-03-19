@@ -34,4 +34,9 @@ public class SysBooksServiceImpl extends ServiceImpl<SysBooksMapper, SysBooks> i
     public int subBook(Long bookId) {
         return this.baseMapper.subBook(bookId);
     }
+    
+    @Override
+    public int addBook(Long bookId) {
+        return  this.baseMapper.addBook(bookId);
+    }
 }

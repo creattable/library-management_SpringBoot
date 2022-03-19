@@ -17,5 +17,6 @@ public interface SysBooksMapper extends BaseMapper<SysBooks> {
     
     //有点麻烦，具体的写在mappper里面吧
     int subBook(@Param("bookId") Long bookId);
+    int addBook(@Param("bookId") Long bookId);
     
 }

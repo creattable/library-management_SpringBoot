@@ -15,5 +15,8 @@ public interface SysBooksService extends IService<SysBooks> {
     //借书：让库存-1
     int subBook(Long bookId);
     
+    //加库存
+    int addBook(Long bookId);
+    
     
 }
