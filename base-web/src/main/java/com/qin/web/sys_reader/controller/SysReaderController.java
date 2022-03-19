@@ -71,5 +71,15 @@ public class SysReaderController {
         return  ResultUtils.success("查询成功！",list);
     }
     
+    //根据学号查询喜喜
+    @GetMapping("/getByUserName")
+    public ResultVo getByUserName(SysReader reader){
+        QueryWrapper<SysReader> query=new QueryWrapper();
+        query.lambda().eq(SysReader::getUsername,reader.getUsername());
+        SysReader one = sysReaderService.getOne(query);
+        return ResultUtils.success("查询成功",one);
+    
+    }
+    
     
 }

@@ -55,7 +55,7 @@ public class SysBooksController {
     public ResultVo getList(ListParm parm){
         //执行顺序
         //controller->getList(service)->return getList(xml)
-    
+        System.out.println("------------------"+parm);
         IPage<SysBooks> list = sysBooksService.getList(parm);
         return ResultUtils.success("查询成功",list);
     
