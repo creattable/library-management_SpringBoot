@@ -27,4 +27,11 @@ public class SysBooksServiceImpl extends ServiceImpl<SysBooksMapper, SysBooks> i
 
         return this.baseMapper.getList(page,parm);
     }
+    
+    
+    //有点麻烦，具体的写在mappper里面吧
+    @Override
+    public int subBook(Long bookId) {
+        return this.baseMapper.subBook(bookId);
+    }
 }

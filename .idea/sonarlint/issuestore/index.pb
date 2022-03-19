@@ -61,9 +61,5 @@ x
 Hbase-web/src/main/java/com/qin/web/sys_category/entity/ListCateParm.java,7\8\78ea716ac85ea9c3f182dbb4d632578bc55b3b51
 }
 Mbase-web/src/main/java/com/qin/web/sys_menu/controller/SysMenuController.java,d\6\d649cad18d5bad786baa662a53888ba01e70f815
-y
-Ibase-web/src/main/java/com/qin/web/sys_books/service/SysBooksService.java,3\1\3108ec181638bd19d3f8df7f16135020befad97e
-w
-Gbase-web/src/main/java/com/qin/web/sys_books/mapper/SysBooksMapper.java,d\d\ddda8ac675284fd33f71364e645cf49b82ae19bc
 q
 Abase-web/src/main/java/com/qin/web/sys_books/entity/ListParm.java,b\5\b5e7ef7e6ad2b59f0c11b3c19bbf21f34d79d578

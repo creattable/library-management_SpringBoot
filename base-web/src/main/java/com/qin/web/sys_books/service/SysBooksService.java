@@ -12,4 +12,8 @@ import com.qin.web.sys_books.entity.SysBooks;
 public interface SysBooksService extends IService<SysBooks> {
     IPage<SysBooks> getList(ListParm parm);
     
+    //借书：让库存-1
+    int subBook(Long bookId);
+    
+    
 }

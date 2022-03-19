@@ -15,4 +15,7 @@ public interface SysBooksMapper extends BaseMapper<SysBooks> {
     
     IPage<SysBooks> getList(Page<SysBooks> page,@Param("parm") ListParm parm);
     
+    //有点麻烦，具体的写在mappper里面吧
+    int subBook(@Param("bookId") Long bookId);
+    
 }

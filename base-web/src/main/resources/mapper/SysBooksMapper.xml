@@ -22,4 +22,8 @@
         </if>
     </select>
     
+    <update id="subBook">
+        update sys_books set book_store = book_store-1 where book_id = #{bookId} and book_store>0
+    </update>
+    
 </mapper>
