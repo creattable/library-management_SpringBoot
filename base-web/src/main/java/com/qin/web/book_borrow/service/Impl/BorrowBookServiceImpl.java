@@ -117,12 +117,42 @@ public class BorrowBookServiceImpl extends ServiceImpl<BorrowBookMapper, BorrowB
                 BorrowBook borrowBook=new BorrowBook();
                 borrowBook.setBorrowId(list.get(i).getBorrowId());
                 borrowBook.setBorrowStatus("2");//2代表已还
+                borrowBook.setReturnStatus("1");//正常还书
                 this.baseMapper.updateById(borrowBook);
                 
             }
         }
         
         
+    }
+    
+    @Override
+    public void exceptionBook(ExceptionParm parm) {
+        // 0: 异常、破损  1：丢失 ：不能还库存
+        String type = parm.getType();
+        if(type.equals("0")){
+            System.out.println("-----------"+parm.getExceptionText());
+            //加库存
+            int res = sysBooksService.addBook(parm.getBookId());
+            if(res > 0){
+                //变更借书状态
+                BorrowBook borrowBook = new BorrowBook();
+                borrowBook.setBorrowId(parm.getBorrowId());
+                borrowBook.setBorrowStatus("2"); //已还
+                borrowBook.setReturnStatus("2"); //异常还书
+                borrowBook.setExcepionText(parm.getExceptionText());
+                this.baseMapper.updateById(borrowBook);
+            }
+        }else{ //丢失
+            //变更借书状态
+            BorrowBook borrowBook = new BorrowBook();
+            borrowBook.setBorrowId(parm.getBorrowId());
+            borrowBook.setBorrowStatus("2"); //已还
+            borrowBook.setReturnStatus("3"); //丢失
+            borrowBook.setExcepionText(parm.getExceptionText());
+            this.baseMapper.updateById(borrowBook);
+        }
+    
     }
     
 }

@@ -3,10 +3,7 @@ package com.qin.web.book_borrow.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.qin.utils.ResultUtils;
 import com.qin.utils.ResultVo;
-import com.qin.web.book_borrow.entity.BorrowParm;
-import com.qin.web.book_borrow.entity.ListParm;
-import com.qin.web.book_borrow.entity.ReturnBook;
-import com.qin.web.book_borrow.entity.ReturnParm;
+import com.qin.web.book_borrow.entity.*;
 import com.qin.web.book_borrow.service.BorrowBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -39,13 +36,18 @@ public class BorrowBookController {
         return ResultUtils.success("查询成功",borrowList);
     }
     
-    //还书
+    //还书(可批量)
     @PostMapping("/returnBooks")
     public ResultVo returnBooks(@RequestBody List<ReturnParm> parm){
-    
         borrowBookService.returnBook(parm);
         return ResultUtils.success("还书成功");
-        
+    }
+    
+    //异常还书
+    @PostMapping("/exceptionBooks")
+    public ResultVo exceptionBooks(@RequestBody ExceptionParm parm){
+        borrowBookService.exceptionBook(parm);
+        return ResultUtils.success("还书成功");
     }
     
     

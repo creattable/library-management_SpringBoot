@@ -23,5 +23,8 @@ public interface BorrowBookService extends IService<BorrowBook> {
     //还书(正常)
     void returnBook(List<ReturnParm> list);
     
+    //异常还书
+    void exceptionBook(ExceptionParm parm);
+    
     
 }
