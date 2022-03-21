@@ -50,5 +50,12 @@ public class BorrowBookController {
         return ResultUtils.success("还书成功");
     }
     
+    //借阅查看
+    @GetMapping("/getLookBorrowList")
+    public ResultVo getLookBorrowList(LookParm parm){
+        IPage<LookBorrow> lookBorrowList = borrowBookService.getLookBorrowList(parm);
+        return ResultUtils.success("查询成功",lookBorrowList);
+    }
+    
     
 }

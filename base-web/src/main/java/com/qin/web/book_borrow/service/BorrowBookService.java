@@ -26,5 +26,8 @@ public interface BorrowBookService extends IService<BorrowBook> {
     //异常还书
     void exceptionBook(ExceptionParm parm);
     
+    //借阅查看列表
+    IPage<LookBorrow> getLookBorrowList(LookParm parm);
+    
     
 }
