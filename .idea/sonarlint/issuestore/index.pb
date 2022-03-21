@@ -59,8 +59,6 @@ Kbase-web/src/main/java/com/qin/web/sys_reader/service/SysReaderService.java,4\
 Tbase-web/src/main/java/com/qin/web/sys_reader/service/impl/SysReaderServiceImpl.java,b\9\b9a9684eaa949ae326a7440db744ee96ece2a3ba
 x
 Hbase-web/src/main/java/com/qin/web/sys_category/entity/ListCateParm.java,7\8\78ea716ac85ea9c3f182dbb4d632578bc55b3b51
-}
-Mbase-web/src/main/java/com/qin/web/sys_menu/controller/SysMenuController.java,d\6\d649cad18d5bad786baa662a53888ba01e70f815
 q
 Abase-web/src/main/java/com/qin/web/sys_books/entity/ListParm.java,b\5\b5e7ef7e6ad2b59f0c11b3c19bbf21f34d79d578
 q
@@ -99,5 +97,3 @@ Gbase-web/src/main/java/com/qin/web/sys_books/mapper/SysBooksMapper.java,d\d\dd
 Nbase-common/src/main/java/com/qin/exception_advice/GlobalExceptionHandler.java,7\e\7ef4aaefae5600e1363ad070ba5e338ef354c6c3
 x
 Hbase-web/src/main/java/com/qin/web/book_borrow/entity/ExceptionParm.java,5\3\53490619512c5790dc66a40fa2f348a649db9ae6
-s
-Cbase-web/src/main/java/com/qin/web/book_borrow/entity/ListParm.java,0\a\0ac959a87baf2fad2aa5f4aa2d7560e79ed0c96c
