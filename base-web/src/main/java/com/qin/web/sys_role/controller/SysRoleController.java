@@ -3,6 +3,8 @@ package com.qin.web.sys_role.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.qin.utils.ResultUtils;
 import com.qin.utils.ResultVo;
+import com.qin.web.sys_role.entity.AssignParm;
+import com.qin.web.sys_role.entity.AssignVo;
 import com.qin.web.sys_role.entity.RoleParm;
 import com.qin.web.sys_role.entity.SysRole;
 import com.qin.web.sys_role.service.SysRoleService;
@@ -62,11 +64,19 @@ public class SysRoleController {
     //列表
     @GetMapping("/list")
     public ResultVo getList(RoleParm parm){
-    
+
         IPage<SysRole> list = SysRoleService.list(parm);
     
         return ResultUtils.success("查询角色成功！",list);
     
+    }
+    
+    
+    //查询角色权限树的回显
+    @GetMapping("/getAssingShow")
+    public ResultVo getAssingShow(AssignParm parm) {
+        AssignVo show = SysRoleService.getAssignShow(parm);
+        return ResultUtils.success("查询成功", show);
     }
     
 

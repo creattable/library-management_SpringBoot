@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 /*
-* 这里表示启动类
+1* 这里表示启动类
 * */
 
 @SpringBootApplication

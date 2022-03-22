@@ -16,6 +16,12 @@ public interface SysMenuService extends IService<SysMenu> {
     //上级菜单的列表
     List<SysMenu> parentList();
     
+    //根据用户id查询权限
+    List<SysMenu> getMenuByUserId(Long userId);
+    
+    //根据角色id查询权限
+    List<SysMenu> getMenuByRoleId(Long roleId);
+    
     
     
 }
