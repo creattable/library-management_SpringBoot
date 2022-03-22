@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.qin.utils.ResultUtils;
 import com.qin.utils.ResultVo;
+import com.qin.web.sys_role.entity.SysRole;
+import com.qin.web.sys_role.service.SysRoleService;
 import com.qin.web.sys_user.entity.PageParm;
 import com.qin.web.sys_user.entity.SysUser;
 import com.qin.web.sys_user.service.SysUserService;
@@ -12,6 +14,7 @@ import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author 秦家乐
@@ -25,6 +28,8 @@ public class SysUserController {
     
     @Autowired
     private SysUserService sysUserService;
+    @Autowired
+    private SysRoleService sysRoleService;
     
     
     //新增用户
@@ -46,12 +51,9 @@ public class SysUserController {
         //设置创建时间
         user.setCreateTime(new Date());
         //入库
-        boolean save = sysUserService.save(user);
-        
-        if(save){
-            return ResultUtils.success("新增用户成功!");
-        }
-        return ResultUtils.error("新增用户失败！");
+        sysUserService.addUser(user);
+    
+        return ResultUtils.success("编辑用户成功!");
     }
     
     
@@ -73,12 +75,9 @@ public class SysUserController {
         user.setUpdateTime(new Date());
         
         //入库
-        boolean update = sysUserService.updateById(user);
-    
-        if(update){
-            return ResultUtils.success("编辑用户成功!");
-        }
-        return ResultUtils.error("编辑用户失败！");
+        sysUserService.editUser(user);
+        return ResultUtils.success("编辑用户成功!");
+        
         
     }
     
@@ -107,6 +106,14 @@ public class SysUserController {
         
         return ResultUtils.success("查询成功",list);
         
+    }
+    
+    
+    //查询角色列表
+    @GetMapping("/getRoleList")
+    public ResultVo getRoleList(){
+        List<SysRole> list = sysRoleService.list();
+        return ResultUtils.success("查询成功",list);
     }
     
     

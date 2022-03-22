@@ -12,5 +12,8 @@ import com.qin.web.sys_user.entity.SysUser;
 public interface SysUserService extends IService<SysUser> {
     
     IPage<SysUser> list(PageParm parm);
+    
+    void addUser(SysUser user);
+    void editUser(SysUser user);
 
 }
