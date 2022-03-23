@@ -13,4 +13,10 @@ public interface SysReaderService extends IService<SysReader> {
     
     IPage<SysReader> getList(ReaderParm parm);
     
+    //新增读者
+    void saveReader(SysReader sysReader);
+    
+    //编辑读者
+    void editReader(SysReader sysReader);
+    
 }

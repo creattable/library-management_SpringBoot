@@ -19,6 +19,12 @@ mybatis-plus:
       #配置mybatis plus 在更新时只更新非空和非NULL的字段,如果为空就不更新
       update-strategy: not_empty
 
+#jwt配置
+jwt:
+  secret: com.itmk
+  #30分钟过期
+  expiration: 1800000
+
 logging:
   pattern:
     console: '%d{yyyy-MM-dd} [%thread] %-5level %logger- %msg%n'

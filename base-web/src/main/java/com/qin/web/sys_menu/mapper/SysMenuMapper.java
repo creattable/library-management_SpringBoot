@@ -15,6 +15,9 @@ public interface SysMenuMapper extends BaseMapper<SysMenu> {
     //根据用户id查询权限
     List<SysMenu> getMenuByUserId(@Param("userId") Long userId);
     
+    //根据读者id查询权限，这两个查询几乎是一样的
+    List<SysMenu> getReaderMenuByUserId(@Param("readerId") Long readerId);
+    
     //根据角色id查询权限
     List<SysMenu> getMenuByRoleId(@Param("roleId") Long roleId);
     

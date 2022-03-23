@@ -72,4 +72,9 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
     public List<SysMenu> getMenuByRoleId(Long roleId) {
         return this.baseMapper.getMenuByRoleId(roleId);
     }
+    
+    @Override
+    public List<SysMenu> getReaderMenuByUserId(Long readerId) {
+        return this.baseMapper.getReaderMenuByUserId(readerId);
+    }
 }

@@ -8,6 +8,7 @@ import com.qin.web.sys_reader.entity.ReaderParm;
 import com.qin.web.sys_reader.entity.SysReader;
 import com.qin.web.sys_reader.service.SysReaderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -23,35 +24,32 @@ public class SysReaderController {
     
     //新增
     @PostMapping
-    public ResultVo addReader(@RequestBody SysReader reader){
+    public ResultVo addReader(@RequestBody SysReader reader) {
         //查询学号是否已经被占用
-        QueryWrapper<SysReader> query=new QueryWrapper<>();
-        query.lambda().eq(SysReader::getUsername,reader.getUsername());
+        QueryWrapper<SysReader> query = new QueryWrapper<>();
+        query.lambda().eq(SysReader::getUsername, reader.getUsername());
         SysReader one = sysReaderService.getOne(query);
-        if(one!=null){
+        if (one != null) {
             return ResultUtils.error("学号已经被占用");
         }
         
+        reader.setPassword(DigestUtils.md5DigestAsHex(reader.getPassword().getBytes()));
         
         //如果是管理自己新增的，则默认为已经审核了,同时默认状态是启用
         reader.setClassName("1");
         reader.setUserStatus("1");
-        boolean save = sysReaderService.save(reader);
-        if (save) {
-            return ResultUtils.success("新增成功！");
-        }
-        return ResultUtils.error("新增失败！");
+        sysReaderService.saveReader(reader);
+        return ResultUtils.success("新增成功！");
+        
     }
     
     //编辑
     @PutMapping
     public ResultVo editReader(@RequestBody SysReader reader) {
         
-        boolean save = sysReaderService.updateById(reader);
-        if (save) {
-            return ResultUtils.success("编辑成功！");
-        }
-        return ResultUtils.error("编辑失败！");
+        sysReaderService.editReader(reader);
+        return ResultUtils.success("编辑成功！");
+        
     }
     
     //删除
@@ -66,19 +64,19 @@ public class SysReaderController {
     
     //列表查询
     @GetMapping("/list")
-    public ResultVo getList(ReaderParm parm){
+    public ResultVo getList(ReaderParm parm) {
         IPage<SysReader> list = sysReaderService.getList(parm);
-        return  ResultUtils.success("查询成功！",list);
+        return ResultUtils.success("查询成功！", list);
     }
     
-    //根据学号查询喜喜
+    //根据学号查询信息
     @GetMapping("/getByUserName")
-    public ResultVo getByUserName(SysReader reader){
-        QueryWrapper<SysReader> query=new QueryWrapper();
-        query.lambda().eq(SysReader::getUsername,reader.getUsername());
+    public ResultVo getByUserName(SysReader reader) {
+        QueryWrapper<SysReader> query = new QueryWrapper();
+        query.lambda().eq(SysReader::getUsername, reader.getUsername());
         SysReader one = sysReaderService.getOne(query);
-        return ResultUtils.success("查询成功",one);
-    
+        return ResultUtils.success("查询成功", one);
+        
     }
     
     

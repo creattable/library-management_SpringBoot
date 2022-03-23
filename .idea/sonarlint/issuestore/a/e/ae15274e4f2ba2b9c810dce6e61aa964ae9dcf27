@@ -1,0 +1,5 @@
+
+X
+java:S1612^"=Replace this lambda with method reference 'Objects::nonNull'.(‚şÄïùÿÿÿÿ
+G
+java:S1602^",Remove useless curly braces around statement(‚şÄïùÿÿÿÿ
