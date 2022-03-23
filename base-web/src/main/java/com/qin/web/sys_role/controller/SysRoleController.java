@@ -3,11 +3,9 @@ package com.qin.web.sys_role.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.qin.utils.ResultUtils;
 import com.qin.utils.ResultVo;
-import com.qin.web.sys_role.entity.AssignParm;
-import com.qin.web.sys_role.entity.AssignVo;
-import com.qin.web.sys_role.entity.RoleParm;
-import com.qin.web.sys_role.entity.SysRole;
+import com.qin.web.sys_role.entity.*;
 import com.qin.web.sys_role.service.SysRoleService;
+import com.qin.web.sys_role_menu.service.RoleMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +22,8 @@ public class SysRoleController {
     
     @Autowired
     private SysRoleService SysRoleService;
+    @Autowired
+    private RoleMenuService roleMenuService;
     
     
     //新增
@@ -77,6 +77,14 @@ public class SysRoleController {
     public ResultVo getAssingShow(AssignParm parm) {
         AssignVo show = SysRoleService.getAssignShow(parm);
         return ResultUtils.success("查询成功", show);
+    }
+    
+    
+    //角色分配权限保存
+    @PostMapping("/assignSave")
+    public ResultVo assignSave(@RequestBody SaveAssign parm){
+        roleMenuService.assignSave(parm.getRoleId(),parm.getList());
+        return ResultUtils.success("分配成功!");
     }
     
 
