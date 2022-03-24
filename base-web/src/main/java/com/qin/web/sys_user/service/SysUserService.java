@@ -15,5 +15,7 @@ public interface SysUserService extends IService<SysUser> {
     
     void addUser(SysUser user);
     void editUser(SysUser user);
+    
+    SysUser loadByUsername(String username);
 
 }

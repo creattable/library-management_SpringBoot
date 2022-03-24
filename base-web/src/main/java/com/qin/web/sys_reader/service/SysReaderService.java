@@ -19,4 +19,6 @@ public interface SysReaderService extends IService<SysReader> {
     //编辑读者
     void editReader(SysReader sysReader);
     
+    SysReader loadByUsername(String username);
+    
 }

@@ -109,4 +109,11 @@ public class SysReaderServiceImpl extends ServiceImpl<SysReaderMapper, SysReader
         
         
     }
+    
+    @Override
+    public SysReader loadByUsername(String username) {
+        QueryWrapper<SysReader> query = new QueryWrapper();
+        query.lambda().eq(SysReader::getUsername,username);
+        return this.baseMapper.selectOne(query);
+    }
 }

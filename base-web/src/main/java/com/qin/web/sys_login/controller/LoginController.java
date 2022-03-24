@@ -8,6 +8,8 @@ import com.qin.utils.ResultVo;
 import com.qin.web.sys_login.entity.LoginParm;
 import com.qin.web.sys_login.entity.LoginResult;
 import com.qin.web.sys_login.entity.UserInfo;
+import com.qin.web.sys_menu.entity.MakeTree;
+import com.qin.web.sys_menu.entity.RouterVO;
 import com.qin.web.sys_menu.entity.SysMenu;
 import com.qin.web.sys_menu.service.SysMenuService;
 import com.qin.web.sys_reader.entity.SysReader;
@@ -107,10 +109,14 @@ public class LoginController {
         String token = request.getHeader("token");
         //从token里面解析用户的类型
         Claims claims = jwtUtils.getClaimsFromToken(token);
+        System.out.println("-------------------------------");
+        System.out.println(claims);
         Object userType = claims.get("userType");
+        System.out.println("-------------------------------");
+    
         //定义用户信息类
         UserInfo userInfo = new UserInfo();
-
+        System.out.println("-------------------------------");
         //0表示读者，1是管理
         if (userType.equals("0")) { //读者
             //根据id查询读者信息
@@ -120,15 +126,16 @@ public class LoginController {
             userInfo.setAvatar("https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif");
             //权限字段查询与设置
             List<SysMenu> menuList = sysMenuService.getReaderMenuByUserId(userId);
-            //只需要权限字段，因此需要过滤不需要的
+            System.out.println("-------------------------------");
             List<String> collect = menuList.stream().filter(item -> item != null && item.getCode() != null).map(item -> item.getCode()).collect(Collectors.toList());
-            if (collect.size() == 0) {
+            if(collect.size() ==0){
                 return ResultUtils.error("暂无登录权限，请联系管理员!");
             }
+            System.out.println("-------------------------------");
             //转成数组
             String[] strings = collect.toArray(new String[collect.size()]);
             userInfo.setRoles(strings);
-            return ResultUtils.success("查询成功", userInfo);
+            return ResultUtils.success("查询成功",userInfo);
         } else if (userType.equals("1")) { //管理员
             SysUser user = sysUserService.getById(userId);
             userInfo.setIntroduction(user.getNickName());
@@ -147,6 +154,45 @@ public class LoginController {
             return ResultUtils.success("查询成功", userInfo);
         } else {
             return ResultUtils.error("用户类型不存在", userInfo);
+        }
+    }
+    
+    
+    //获取菜单
+    @GetMapping("/getMenuList")
+    public ResultVo getMenuList(HttpServletRequest request) {
+        //获取token
+        String token = request.getHeader("token");
+        //获取用户名
+        String username = jwtUtils.getUsernameFromToken(token);
+        //获取用户类型
+        Claims claims = jwtUtils.getClaimsFromToken(token);
+        Object userType = claims.get("userType");
+        if (userType.equals("0")) {  //读者
+            //获取用户信息
+            SysReader reader = sysReaderService.loadByUsername(username);
+            //获取权限信息
+            List<SysMenu> menuList = sysMenuService.getReaderMenuByUserId(reader.getReaderId());
+            List<SysMenu> collect = menuList.stream().filter(item -> item != null && !item.getType().equals("2")).collect(Collectors.toList());
+            if (collect.size() == 0) {
+                return ResultUtils.error("暂无登录权限，请联系管理员!");
+            }
+            List<RouterVO> routerVOS = MakeTree.makeRouter(collect, 0L);
+            return ResultUtils.success("查询成功", routerVOS);
+            
+        } else if (userType.equals("1")) {  // 管理员
+            //获取用户信息
+            SysUser reader = sysUserService.loadByUsername(username);
+            //获取权限信息
+            List<SysMenu> menuList = sysMenuService.getMenuByUserId(reader.getUserId());
+            List<SysMenu> collect = menuList.stream().filter(item -> item != null && !item.getType().equals("2")).collect(Collectors.toList());
+            if (collect.size() == 0) {
+                return ResultUtils.error("暂无登录权限，请联系管理员!");
+            }
+            List<RouterVO> routerVOS = MakeTree.makeRouter(collect, 0L);
+            return ResultUtils.success("查询成功", routerVOS);
+        } else {
+            return ResultUtils.error("用户类型不存在!");
         }
     }
     

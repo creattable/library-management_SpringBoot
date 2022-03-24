@@ -22,7 +22,7 @@ mybatis-plus:
 #jwt配置
 jwt:
   secret: com.itmk
-  #30分钟过期
+  #30分钟过期是1800000
   expiration: 1800000
 
 logging:

@@ -105,10 +105,6 @@ w
 Gbase-web/src/main/java/com/qin/web/sys_role/service/SysRoleService.java,3\4\3462f85bbb034c1600479fe9e0218262ebe1e850
 o
 ?base-web/src/main/java/com/qin/web/sys_user/entity/SysUser.java,7\6\76607ecfcca37f1907cfbd2d1ef3def985117f16
-w
-Gbase-web/src/main/java/com/qin/web/sys_user/service/SysUserService.java,0\6\0608afad16526de630aaf32fbb7ef28617d12b3f
-p
-@base-web/src/main/java/com/qin/web/sys_menu/entity/MakeTree.java,6\3\630aa45a186b5898154a7c6db86493ed76855f25
 v
 Fbase-web/src/main/java/com/qin/web/sys_role_menu/entityt/RoleMenu.java,4\0\4087e564cbba91975da41839bf8ff3ee2a830f8d
 }
@@ -137,12 +133,6 @@ d
 Vbase-web/src/main/java/com/qin/web/sys_user_role/service/impl/UserRoleServiceImpl.java,e\b\ebaf7e207325b6ddd18e33fb2b9ab4438f097ac6
 }
 Mbase-web/src/main/java/com/qin/web/sys_role/controller/SysRoleController.java,1\7\178221a6e4119a9ddb7be9f0788296ffbd7f28a6
-€
-Pbase-web/src/main/java/com/qin/web/sys_user/service/impl/SysUserServiceImpl.java,5\3\530b5de0cde0046e68d6d83b86cda34fa415650c
-„
-Tbase-web/src/main/java/com/qin/web/sys_reader/service/impl/SysReaderServiceImpl.java,b\9\b9a9684eaa949ae326a7440db744ee96ece2a3ba
-{
-Kbase-web/src/main/java/com/qin/web/sys_reader/service/SysReaderService.java,4\1\41d977cad132d29566639e0decb28018b327a220
 r
 Bbase-web/src/main/java/com/qin/web/sys_login/entity/LoginParm.java,7\e\7e9dace53490eb9cbb41ef251f96e58c30568620
 t

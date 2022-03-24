@@ -74,4 +74,11 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
             userRoleService.save(userRole);
         }
     }
+    
+    @Override
+    public SysUser loadByUsername(String username) {
+        QueryWrapper<SysUser> query = new QueryWrapper<>();
+        query.lambda().eq(SysUser::getUsername,username);
+        return this.baseMapper.selectOne(query);
+    }
 }
