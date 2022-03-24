@@ -22,6 +22,29 @@ public class SysReaderController {
     @Autowired
     private SysReaderService sysReaderService;
     
+    
+    //读者注册
+    @PostMapping("/register")
+    public ResultVo register(@RequestBody SysReader reader) {
+        //查询学号是否已经被占用
+        QueryWrapper<SysReader> query = new QueryWrapper<>();
+        query.lambda().eq(SysReader::getUsername, reader.getUsername());
+        SysReader one = sysReaderService.getOne(query);
+        if (one != null) {
+            return ResultUtils.error("学号已经被占用");
+        }
+        
+        reader.setPassword(DigestUtils.md5DigestAsHex(reader.getPassword().getBytes()));
+        
+        //如果是管理自己新增的，则默认为已经审核了,同时默认状态是启用，
+        //0是未审核，需要管理审核
+        reader.setCheckStatus("0");
+        reader.setUserStatus("1");
+        sysReaderService.saveReader(reader);
+        return ResultUtils.success("注册成功！");
+        
+    }
+    
     //新增
     @PostMapping
     public ResultVo addReader(@RequestBody SysReader reader) {
@@ -36,7 +59,7 @@ public class SysReaderController {
         reader.setPassword(DigestUtils.md5DigestAsHex(reader.getPassword().getBytes()));
         
         //如果是管理自己新增的，则默认为已经审核了,同时默认状态是启用
-        reader.setClassName("1");
+        reader.setCheckStatus("1");
         reader.setUserStatus("1");
         sysReaderService.saveReader(reader);
         return ResultUtils.success("新增成功！");

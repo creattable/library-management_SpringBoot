@@ -137,8 +137,6 @@ r
 Bbase-web/src/main/java/com/qin/web/sys_login/entity/LoginParm.java,7\e\7e9dace53490eb9cbb41ef251f96e58c30568620
 t
 Dbase-web/src/main/java/com/qin/web/sys_login/entity/LoginResult.java,d\6\d6c92764e390e5ecf256473dbd202fcfb461e29f
-Å
-Qbase-web/src/main/java/com/qin/web/sys_reader/controller/SysReaderController.java,5\5\55e156a1485b241db66fdfc58494ae2ba7c4f4e1
 @
 base-web/pom.xml,1\0\10bffe9e2f152f92b02b7f847de763b380f159e1
 c
