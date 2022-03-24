@@ -147,8 +147,6 @@ r
 Bbase-web/src/main/java/com/qin/web/sys_login/entity/LoginParm.java,7\e\7e9dace53490eb9cbb41ef251f96e58c30568620
 t
 Dbase-web/src/main/java/com/qin/web/sys_login/entity/LoginResult.java,d\6\d6c92764e390e5ecf256473dbd202fcfb461e29f
-s
-Cbase-web/src/main/java/com/qin/web/sys_reader/entity/SysReader.java,7\b\7bed072efc2bc670dd073bd2e26bc53ba25bec91
 Å
 Qbase-web/src/main/java/com/qin/web/sys_reader/controller/SysReaderController.java,5\5\55e156a1485b241db66fdfc58494ae2ba7c4f4e1
 @
@@ -161,5 +159,3 @@ w
 Gbase-web/src/main/java/com/qin/web/sys_menu/service/SysMenuService.java,4\a\4a376ebc19bb213ac1c610b5baa3553836b5045f
 Ä
 Pbase-web/src/main/java/com/qin/web/sys_menu/service/impl/SysMenuServiceImpl.java,6\8\689cd2eb194bd5422201b501dfc27cf80c3a19a9
-|
-Lbase-web/src/main/java/com/qin/web/sys_login/controller/LoginController.java,f\c\fc2710e1ba6506b23659bd6011c8bef7199c1576
