@@ -69,10 +69,16 @@ public class SysReaderController {
     //编辑
     @PutMapping
     public ResultVo editReader(@RequestBody SysReader reader) {
-        
         sysReaderService.editReader(reader);
         return ResultUtils.success("编辑成功！");
-        
+    }
+    
+    //读者审核
+    @PutMapping("/applyReader")
+    public ResultVo applyReader(@RequestBody SysReader reader) {
+        reader.setCheckStatus("1");
+        sysReaderService.updateById(reader);
+        return ResultUtils.success("审核成功！");
     }
     
     //删除

@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.qin.web.book_borrow.entity.*;
 import org.apache.ibatis.annotations.Param;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -15,7 +16,7 @@ import java.util.List;
 public interface BorrowBookService extends IService<BorrowBook> {
     
     //借书
-    void borrow(BorrowParm parm);
+    void borrow(BorrowParm parm, String userType);
     
     //还书列表
     IPage<ReturnBook> getBorrowList(ListParm parm);
@@ -28,6 +29,9 @@ public interface BorrowBookService extends IService<BorrowBook> {
     
     //借阅查看列表
     IPage<LookBorrow> getLookBorrowList(LookParm parm);
+    
+    //读者借阅查看列表
+    IPage<LookBorrow> getReaderLookBorrowList( LookParm parm);
     
     
 }

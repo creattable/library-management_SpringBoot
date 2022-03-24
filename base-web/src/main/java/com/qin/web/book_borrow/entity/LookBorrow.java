@@ -20,6 +20,7 @@ import java.util.Date;
 
 @Data
 public class LookBorrow {
+    private Long readerId;
     private Long borrowId;
     private Long bookId;
     private String bookName;

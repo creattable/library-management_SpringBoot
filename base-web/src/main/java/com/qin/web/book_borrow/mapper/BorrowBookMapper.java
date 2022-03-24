@@ -12,6 +12,9 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface BorrowBookMapper extends BaseMapper<BorrowBook> {
     IPage<ReturnBook> getBorrowList(Page<ReturnBook> page, @Param("parm")ListParm parm);
-    //借阅查看列表
+    //管理员借阅查看列表
     IPage<LookBorrow> getLookBorrowList(Page<LookBorrow> page, @Param("parm") LookParm parm);
+    
+    //读者借阅查看列表
+    IPage<LookBorrow> getReaderLookBorrowList(Page<LookBorrow> page, @Param("parm") LookParm parm);
 }

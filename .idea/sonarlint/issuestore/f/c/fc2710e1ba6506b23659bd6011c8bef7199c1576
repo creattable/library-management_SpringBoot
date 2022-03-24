@@ -1,0 +1,30 @@
+
+E
+java:S37402"/Provide the parametrized type for this generic.(¤´¹°
+E
+java:S3740k"/Provide the parametrized type for this generic.(äØ‘ï
+M
+java:S3740£"/Provide the parametrized type for this generic.(ŸÌ¥Ñ8¸…§ßû/
+S	java:S106:"9Replace this use of System.out or System.err by a logger.(¾Á•Ïûÿÿÿÿ
+Z	java:S106p"9Replace this use of System.out or System.err by a logger.(ç‘ë®üÿÿÿÿ8åÕ«ßû/
+U	java:S106q"9Replace this use of System.out or System.err by a logger.(µ–ğ8¯Ó­ßû/
+Z	java:S106s"9Replace this use of System.out or System.err by a logger.(ç‘ë®üÿÿÿÿ8ˆÑ°ßû/
+Z	java:S106w"9Replace this use of System.out or System.err by a logger.(ç‘ë®üÿÿÿÿ8 €³ßû/
+[	java:S106"9Replace this use of System.out or System.err by a logger.(ç‘ë®üÿÿÿÿ8ÿÛµßû/
+`
+java:S1612‚"=Replace this lambda with method reference 'SysMenu::getCode'.(¨©Œƒıÿÿÿÿ8É…§ßû/
+[	java:S106†"9Replace this use of System.out or System.err by a logger.(ç‘ë®üÿÿÿÿ8âƒºßû/
+`
+java:S1612“"=Replace this lambda with method reference 'SysMenu::getCode'.(¨©Œƒıÿÿÿÿ8Î…§ßû/
+‚
+java:S1192p"`Define a constant instead of duplicating this literal "-------------------------------" 5 times.(ç‘ë®üÿÿÿÿ8¼Ó­ßû/
+‡
+java:S1192„"iDefine a constant instead of duplicating this literal "æš‚æ— ç™»å½•æƒé™ï¼Œè¯·è”ç³»ç®¡ç†å‘˜!" 4 times.(àÔú¡8Ô…§ßû/
+a
+java:S1155ƒ">Use isEmpty() to check whether the collection is empty or not.(ÎÛÄşÿÿÿÿ8Õ…§ßû/
+a
+java:S1155”">Use isEmpty() to check whether the collection is empty or not.(ÎÛÄşÿÿÿÿ8Ö…§ßû/
+a
+java:S1155±">Use isEmpty() to check whether the collection is empty or not.(ÎÛÄşÿÿÿÿ8Ö…§ßû/
+a
+java:S1155½">Use isEmpty() to check whether the collection is empty or not.(ÎÛÄşÿÿÿÿ8×…§ßû/

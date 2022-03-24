@@ -37,7 +37,7 @@ public class BorrowBookServiceImpl extends ServiceImpl<BorrowBookMapper, BorrowB
     @Override
     @Transactional
     //涉及到多个表或者对数据的更新，记得添加事务
-    public void borrow(BorrowParm parm) {
+    public void borrow(BorrowParm parm,String userType) {
         //加锁
         lock.lock();
         try {
@@ -76,8 +76,22 @@ public class BorrowBookServiceImpl extends ServiceImpl<BorrowBookMapper, BorrowB
                     borrowBook.setBookId(bookId);
                     borrowBook.setReaderId(parm.getReaderId());
                     borrowBook.setReturnTime(parm.getReturnTime());
-                    borrowBook.setApplyStatus("1");
-                    borrowBook.setBorrowStatus("1");
+                    
+                    //userType等于0的时候是读者，1是管理
+                    //borrowBook设置为0为审核中
+                    //如果借书的是管理，那么审核直接通过
+                    //如果借书的是读者，则需要审核
+                    if(userType.equals("0")){
+                        borrowBook.setApplyStatus("0");
+                        borrowBook.setBorrowStatus("0");
+                    }else if (userType.equals("1")){
+                        borrowBook.setApplyStatus("1");
+                        borrowBook.setBorrowStatus("1");
+                    }else {
+                        throw new BusinessException(500,"用户类型不存在，无法借书");
+                    }
+                    
+                    
                     borrowBook.setBorrowTime(new Date());
                     //插入明细
                     this.baseMapper.insert(borrowBook);
@@ -158,11 +172,22 @@ public class BorrowBookServiceImpl extends ServiceImpl<BorrowBookMapper, BorrowB
     @Override
     public IPage<LookBorrow> getLookBorrowList(LookParm parm) {
         //构造分页对象
+        System.out.println("----------------------------------");
+        Page<LookBorrow> page =new Page<>();
+        page.setCurrent(parm.getCurrentPage());
+        page.setSize(parm.getPageSize());
+        System.out.println("--------------------------------");
+        return this.baseMapper.getLookBorrowList(page,parm);
+    }
+    
+    @Override
+    public IPage<LookBorrow> getReaderLookBorrowList(LookParm parm) {
+        //构造分页对象
         Page<LookBorrow> page =new Page<>();
         page.setCurrent(parm.getCurrentPage());
         page.setSize(parm.getPageSize());
         
-        return this.baseMapper.getLookBorrowList(page,parm);
+        return this.baseMapper.getReaderLookBorrowList(page,parm);
     }
     
 }

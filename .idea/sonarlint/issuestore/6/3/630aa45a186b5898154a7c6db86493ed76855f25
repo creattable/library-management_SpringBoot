@@ -1,0 +1,10 @@
+
+P
+java:S1118":Add a private constructor to hide the implicit public one.(¦‰—Ã
+{
+java:S2178%"fCorrect this "&" to "&&" and extract the right operand to a variable if it should always be evaluated.(¢ì¤
+V	java:S125:"<This block of commented-out lines of code should be removed.(Ý±­¥þÿÿÿÿ
+Q
+java:S4973%"<Strings and Boxed types should be compared using "equals()".(¢ì¤
+W
+java:S4973W"<Strings and Boxed types should be compared using "equals()".(Ó­ì¬ÿÿÿÿÿ

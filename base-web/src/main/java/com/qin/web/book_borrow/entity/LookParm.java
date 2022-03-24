@@ -9,6 +9,9 @@ import lombok.Data;
 
 @Data
 public class LookParm {
+    
+    private Long userId;
+    
     //当前页
     private Long currentPage;
     //每页条数

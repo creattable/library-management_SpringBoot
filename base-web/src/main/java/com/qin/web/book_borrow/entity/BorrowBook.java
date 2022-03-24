@@ -26,7 +26,7 @@ public class BorrowBook {
     private Date returnTime;
     //0: 待审核 1： 已审核  2：拒绝
     private String applyStatus;
-    //1:在借中  2：已还   3：拒绝
+    //0:审核中  1:在借中  2：已还   3：拒绝
     private String borrowStatus;
     //1: 正常还书 2：异常还书
     private String returnStatus;
