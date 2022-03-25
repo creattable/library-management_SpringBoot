@@ -11,6 +11,9 @@ import java.util.List;
  */
 @Data
 public class BorrowParm {
+    
+    private Long borrowId;
+    
     //借书人id
     private Long readerId;
     //图书id

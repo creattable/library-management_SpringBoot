@@ -107,6 +107,12 @@ public class LoginController {
     public ResultVo getInfo(Long userId, HttpServletRequest request) {
         //从请求的头部获取token
         String token = request.getHeader("token");
+        
+        //token过期
+        if(StringUtils.isEmpty(token)){
+            return ResultUtils.error("token过期",600);
+        }
+        
         //从token里面解析用户的类型
         Claims claims = jwtUtils.getClaimsFromToken(token);
         System.out.println("-------------------------------");
@@ -163,6 +169,11 @@ public class LoginController {
     public ResultVo getMenuList(HttpServletRequest request) {
         //获取token
         String token = request.getHeader("token");
+        
+        //token过期
+        if(StringUtils.isEmpty(token)){
+            return ResultUtils.error("token过期",600);
+        }
         //获取用户名
         String username = jwtUtils.getUsernameFromToken(token);
         //获取用户类型

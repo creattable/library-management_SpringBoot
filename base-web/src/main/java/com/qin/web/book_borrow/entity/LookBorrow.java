@@ -12,11 +12,11 @@ import java.util.Date;
 
 
 /*
-*
-* 返回借阅查询
-* 返回的时候用的，
-*
-* */
+ *
+ * 返回借阅查询
+ * 返回的时候用的，
+ *
+ * */
 
 @Data
 public class LookBorrow {
@@ -32,9 +32,9 @@ public class LookBorrow {
     private String borrowStatus;
     //JsonFormat:把数据库中的时间格式设置成pattern参数的格式
     //虽然数据库也是这种格式，但是在传送的时候可能会变成其他格式类型
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date borrowTime;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date returnTime;
     private String applyStatus;
     private String returnStatus;

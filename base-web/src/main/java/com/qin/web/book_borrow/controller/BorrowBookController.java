@@ -1,5 +1,6 @@
 package com.qin.web.book_borrow.controller;
 
+import com.alibaba.druid.util.StringUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.qin.jwt.JwtUtils;
@@ -46,8 +47,15 @@ public class BorrowBookController {
     //借书
     @PostMapping
     public ResultVo borrow(@RequestBody BorrowParm parm, HttpServletRequest request) {
+        
         //先获取下token
         String token = request.getHeader("token");
+    
+        //token过期
+        if(StringUtils.isEmpty(token)){
+            return ResultUtils.error("token过期",600);
+        }
+        
         Claims claims = jwtUtils.getClaimsFromToken(token);
         String userType = (String) claims.get("userType");
         
@@ -82,6 +90,12 @@ public class BorrowBookController {
     public ResultVo getLookBorrowList(LookParm parm, HttpServletRequest request) {
         //获取token
         String token = request.getHeader("token");
+    
+        //token过期
+        if(StringUtils.isEmpty(token)){
+            return ResultUtils.error("token过期",600);
+        }
+        
         Claims claims = jwtUtils.getClaimsFromToken(token);
         String userType = (String) claims.get("userType");
         IPage<LookBorrow> lookBorrowList = null;
@@ -98,6 +112,22 @@ public class BorrowBookController {
             return ResultUtils.error("用户类型错误");
         }
         
+    }
+    
+    
+    //借书续期
+    @PostMapping("/addTime")
+    public ResultVo addTime(@RequestBody BorrowParm parm){
+        BorrowBook borrowBook=new BorrowBook();
+        borrowBook.setBorrowId(parm.getBorrowId());
+        borrowBook.setReturnTime(parm.getReturnTime());
+        boolean b = borrowBookService.updateById(borrowBook);
+        if(b){
+            return ResultUtils.success("续期成功");
+        }
+        return ResultUtils.error("续期失败");
+        
+    
     }
     
     
