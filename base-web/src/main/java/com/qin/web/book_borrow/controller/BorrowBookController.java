@@ -1,6 +1,7 @@
 package com.qin.web.book_borrow.controller;
 
 import com.alibaba.druid.util.StringUtils;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.qin.jwt.JwtUtils;
@@ -13,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.crypto.Data;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -50,10 +53,10 @@ public class BorrowBookController {
         
         //先获取下token
         String token = request.getHeader("token");
-    
+        
         //token过期
-        if(StringUtils.isEmpty(token)){
-            return ResultUtils.error("token过期",600);
+        if (StringUtils.isEmpty(token)) {
+            return ResultUtils.error("token过期", 600);
         }
         
         Claims claims = jwtUtils.getClaimsFromToken(token);
@@ -90,10 +93,10 @@ public class BorrowBookController {
     public ResultVo getLookBorrowList(LookParm parm, HttpServletRequest request) {
         //获取token
         String token = request.getHeader("token");
-    
+        
         //token过期
-        if(StringUtils.isEmpty(token)){
-            return ResultUtils.error("token过期",600);
+        if (StringUtils.isEmpty(token)) {
+            return ResultUtils.error("token过期", 600);
         }
         
         Claims claims = jwtUtils.getClaimsFromToken(token);
@@ -117,16 +120,65 @@ public class BorrowBookController {
     
     //借书续期
     @PostMapping("/addTime")
-    public ResultVo addTime(@RequestBody BorrowParm parm){
-        BorrowBook borrowBook=new BorrowBook();
+    public ResultVo addTime(@RequestBody BorrowParm parm) {
+        BorrowBook borrowBook = new BorrowBook();
         borrowBook.setBorrowId(parm.getBorrowId());
         borrowBook.setReturnTime(parm.getReturnTime());
         boolean b = borrowBookService.updateById(borrowBook);
-        if(b){
+        if (b) {
             return ResultUtils.success("续期成功");
         }
         return ResultUtils.error("续期失败");
         
+    }
+    
+    //借书待审核总数
+    //如果是管理则查所有的，读者只能查自己的
+    @GetMapping("/getBorrowApplyCount")
+    public ResultVo getBorrowApplyCount(String userType, Long userId) {
+        if (userType.equals("0")) {
+            QueryWrapper<BorrowBook> query = new QueryWrapper<>();
+            query.lambda().eq(BorrowBook::getApplyStatus, "0")
+                    .eq(BorrowBook::getReaderId, userId);
+            int count = borrowBookService.count(query);
+            return ResultUtils.success("查询成功", count);
+        } else if (userType.equals("1")) {
+            QueryWrapper<BorrowBook> query = new QueryWrapper<>();
+            query.lambda().eq(BorrowBook::getApplyStatus, "0");
+            int count = borrowBookService.count(query);
+            return ResultUtils.success("查询成功", count);
+        } else {
+            return ResultUtils.success("用户类型错误", 0);
+        }
+        
+        
+    }
+    
+    //到期待还总数
+    //如果是管理则查所有的，读者只能查自己的
+    @GetMapping("/getBorrowReturnCount")
+    public ResultVo getBorrowReturnCount(String userType, Long userId) {
+        System.out.println("*************************************");
+        System.out.println("userType:"+userType);
+        System.out.println("userId:"+userId);
+        if (userType.equals("0")) { //读者
+            QueryWrapper<BorrowBook> query = new QueryWrapper<>();
+            query.lambda().eq(BorrowBook::getBorrowStatus, "1")
+                    .lt(BorrowBook::getReturnTime, new Date())
+                    .eq(BorrowBook::getReaderId, userId);
+            int count = borrowBookService.count(query);
+            return ResultUtils.success("查询成功", count);
+        } else if (userType.equals("1")) { //系统管理员
+            QueryWrapper<BorrowBook> query = new QueryWrapper<>();
+            
+            query.lambda().eq(BorrowBook::getBorrowStatus, "1")
+                    .lt(BorrowBook::getReturnTime, new Date());
+            int count = borrowBookService.count(query);
+            System.out.println(count+"-------------------------------------------");
+            return ResultUtils.success("查询成功", count);
+        } else {
+            return ResultUtils.error("查询失败");
+        }
     
     }
     
