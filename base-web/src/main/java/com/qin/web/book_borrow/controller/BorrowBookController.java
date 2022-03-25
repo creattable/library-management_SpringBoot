@@ -85,7 +85,6 @@ public class BorrowBookController {
         Claims claims = jwtUtils.getClaimsFromToken(token);
         String userType = (String) claims.get("userType");
         IPage<LookBorrow> lookBorrowList = null;
-        System.out.println("getLookBorrowList"+"-----------------------------");
         //0的时候是读者，1是管理
         if (userType.equals("0")) {
             lookBorrowList = borrowBookService.getReaderLookBorrowList(parm);

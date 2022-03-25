@@ -172,21 +172,18 @@ public class BorrowBookServiceImpl extends ServiceImpl<BorrowBookMapper, BorrowB
     @Override
     public IPage<LookBorrow> getLookBorrowList(LookParm parm) {
         //构造分页对象
-        System.out.println("----------------------------------");
         Page<LookBorrow> page =new Page<>();
         page.setCurrent(parm.getCurrentPage());
         page.setSize(parm.getPageSize());
-        System.out.println("--------------------------------");
         return this.baseMapper.getLookBorrowList(page,parm);
     }
     
     @Override
     public IPage<LookBorrow> getReaderLookBorrowList(LookParm parm) {
         //构造分页对象
-        Page<LookBorrow> page =new Page<>();
+        Page<LookBorrow> page = new Page<>();
         page.setCurrent(parm.getCurrentPage());
         page.setSize(parm.getPageSize());
-        
         return this.baseMapper.getReaderLookBorrowList(page,parm);
     }
     

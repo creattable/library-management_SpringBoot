@@ -52,16 +52,16 @@
     </select>
     
     <select id="getReaderLookBorrowList" resultType="com.qin.web.book_borrow.entity.LookBorrow">
-        select t.* from(
-        select b.reader_id,b.borrow_id,b.book_id,sb.book_name,sb.book_place_num,
-        sr.username,sr.learn_num,sr.class_name,sr.phone,b.borrow_time,b.return_time,b.borrow_status,b.apply_status,b.return_status,b.excepion_text,b.apply_text,
-        case when b.return_time &lt;  now()  then '1' else '0' end as time_status
-        from  borrow_book as b left join sys_books as sb on b.book_id = sb.book_id
-        left join sys_reader as sr  on b.reader_id = sr.reader_id
-        order by b.borrow_time desc)t
+        select t.* from (
+        select  b.reader_id,b.borrow_id,b.book_id,sb.book_name,sb.book_place_num,
+        sr.username,sr.learn_num,sr.class_name,sr.phone,b.borrow_time,b.return_time,b.borrow_status,
+        b.apply_status,b.return_status,b.excepion_text,b.apply_text,
+        case when b.return_time &lt; now() then '1' else '0' end as time_status
+        from borrow_book as b left join sys_books as sb on b.book_id = sb.book_id
+        left join sys_reader as sr on sr.reader_id =  b.reader_id )t
         where 1=1
         <if test="parm.userId != null and parm.userId !=''">
-            and t.reader_id =#{userId}
+            and t.reader_id =#{parm.userId}
         </if>
         <if test="parm.username != null and parm.username !=''">
             and t.username =#{parm.username}
