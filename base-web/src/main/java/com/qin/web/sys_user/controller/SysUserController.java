@@ -196,6 +196,20 @@ public class SysUserController {
     
     }
     
+    //重置密码
+    @PostMapping("/resetPassword")
+    public ResultVo resetPassword(@RequestBody SysUser sysUser) {
+        
+        String password = "666666";
+        sysUser.setPassword(DigestUtils.md5DigestAsHex(password.getBytes()));
+        boolean b = sysUserService.updateById(sysUser);
+        if (b) {
+            return ResultUtils.success("重置成功");
+        }
+        return ResultUtils.error("重置密码失败");
+        
+    }
+    
     
     
 }

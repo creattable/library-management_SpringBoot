@@ -133,5 +133,19 @@ public class SysReaderController {
         return ResultUtils.success("查询成功", count);
     }
     
+    //重置密码
+    @PostMapping("/resetPassword")
+    public ResultVo resetPassword(@RequestBody SysReader sysReader) {
+        
+        String password = "666666";
+        sysReader.setPassword(DigestUtils.md5DigestAsHex(password.getBytes()));
+        boolean b = sysReaderService.updateById(sysReader);
+        if (b) {
+            return ResultUtils.success("重置成功");
+        }
+        return ResultUtils.error("重置密码失败");
+
+    }
+    
     
 }
