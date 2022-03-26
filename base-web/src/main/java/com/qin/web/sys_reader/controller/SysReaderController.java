@@ -2,6 +2,7 @@ package com.qin.web.sys_reader.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.qin.annotation.Auth;
 import com.qin.utils.ResultUtils;
 import com.qin.utils.ResultVo;
 import com.qin.web.sys_reader.entity.ReaderParm;
@@ -46,6 +47,7 @@ public class SysReaderController {
     }
     
     //新增
+    @Auth
     @PostMapping
     public ResultVo addReader(@RequestBody SysReader reader) {
         //查询学号是否已经被占用
@@ -67,6 +69,7 @@ public class SysReaderController {
     }
     
     //编辑
+    @Auth
     @PutMapping
     public ResultVo editReader(@RequestBody SysReader reader) {
         sysReaderService.editReader(reader);
@@ -74,6 +77,7 @@ public class SysReaderController {
     }
     
     //读者审核
+    @Auth
     @PutMapping("/applyReader")
     public ResultVo applyReader(@RequestBody SysReader reader) {
         reader.setCheckStatus("1");
@@ -82,6 +86,7 @@ public class SysReaderController {
     }
     
     //删除
+    @Auth
     @DeleteMapping("/{readerId}")
     public ResultVo deleteReader(@PathVariable("readerId") Long readerId) {
         boolean remove = sysReaderService.removeById(readerId);
@@ -92,6 +97,7 @@ public class SysReaderController {
     }
     
     //列表查询
+    @Auth
     @GetMapping("/list")
     public ResultVo getList(ReaderParm parm) {
         IPage<SysReader> list = sysReaderService.getList(parm);
@@ -99,6 +105,7 @@ public class SysReaderController {
     }
     
     //根据学号查询信息
+    @Auth
     @GetMapping("/getByUserName")
     public ResultVo getByUserName(SysReader reader) {
         QueryWrapper<SysReader> query = new QueryWrapper();
@@ -109,6 +116,7 @@ public class SysReaderController {
     }
     
     //读者总数
+    @Auth
     @GetMapping("/getReaderCount")
     public ResultVo getReaderCount() {
         int count = sysReaderService.count();
@@ -116,6 +124,7 @@ public class SysReaderController {
     }
     
     //读者待审核总数
+    @Auth
     @GetMapping("/getApplyReaderCount")
     public ResultVo getApplyReaderCount() {
         QueryWrapper<SysReader> query = new QueryWrapper<>();

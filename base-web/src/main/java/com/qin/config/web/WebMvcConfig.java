@@ -1,7 +1,10 @@
 package com.qin.config.web;
 
+import com.qin.annotation.AuthInterceptor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
@@ -10,6 +13,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
+    
+    @Autowired
+    private AuthInterceptor authInterceptor;
+    
+    
     /**
      * 跨域配置
      * @param registry
@@ -22,5 +30,11 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .allowedHeaders("*")
                 .maxAge(3600)
                 .allowCredentials(true);
+    }
+    
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        //拦截api下面的所有
+        registry.addInterceptor(authInterceptor).addPathPatterns("/api/**");
     }
 }

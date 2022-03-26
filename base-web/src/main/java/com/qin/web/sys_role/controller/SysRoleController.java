@@ -2,6 +2,7 @@ package com.qin.web.sys_role.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.qin.annotation.Auth;
 import com.qin.utils.ResultUtils;
 import com.qin.utils.ResultVo;
 import com.qin.web.sys_role.entity.*;
@@ -28,6 +29,7 @@ public class SysRoleController {
     
     
     //新增
+    @Auth
     @PostMapping
     public ResultVo addRole(@RequestBody SysRole role) {
         
@@ -53,6 +55,7 @@ public class SysRoleController {
     
     
     //编辑
+    @Auth
     @PutMapping
     public ResultVo editRole(@RequestBody SysRole role) {
         
@@ -76,6 +79,7 @@ public class SysRoleController {
     }
     
     //删除
+    @Auth
     @DeleteMapping("/{roleId}")
     public ResultVo deleteRole(@PathVariable("roleId") long roleId) {
         boolean remove = SysRoleService.removeById(roleId);
@@ -87,6 +91,7 @@ public class SysRoleController {
     
     
     //列表
+    @Auth
     @GetMapping("/list")
     public ResultVo getList(RoleParm parm) {
         
@@ -98,6 +103,7 @@ public class SysRoleController {
     
     
     //查询角色权限树的回显
+    @Auth
     @GetMapping("/getAssingShow")
     public ResultVo getAssingShow(AssignParm parm) {
         AssignVo show = SysRoleService.getAssignShow(parm);
@@ -106,6 +112,7 @@ public class SysRoleController {
     
     
     //角色分配权限保存
+    @Auth
     @PostMapping("/assignSave")
     public ResultVo assignSave(@RequestBody SaveAssign parm) {
         roleMenuService.assignSave(parm.getRoleId(), parm.getList());

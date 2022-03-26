@@ -1,6 +1,7 @@
 package com.qin.web.sys_menu.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.qin.annotation.Auth;
 import com.qin.utils.ResultUtils;
 import com.qin.utils.ResultVo;
 import com.qin.web.sys_menu.entity.SysMenu;
@@ -24,6 +25,7 @@ public class SysMenuController {
     private SysMenuService sysMenuService;
     
     //新增
+    @Auth
     @PostMapping
     public ResultVo addMenu(@RequestBody SysMenu menu){
         menu.setCreateTime(new Date());
@@ -36,6 +38,7 @@ public class SysMenuController {
     
     
     //编辑
+    @Auth
     @PutMapping
     public ResultVo editMenu(@RequestBody SysMenu menu){
         menu.setUpdateTime(new Date());
@@ -48,6 +51,7 @@ public class SysMenuController {
 
     
     //删除
+    @Auth
     @DeleteMapping("/{menuId}")
     public ResultVo deleteMenu(@PathVariable("menuId") Long menuId){
         //先判断是否有下级
@@ -67,6 +71,7 @@ public class SysMenuController {
     
     
     //查询菜单列表，它的这个是一个树状结构
+    @Auth
     @GetMapping("/list")
     public ResultVo getList(){
         List<SysMenu> menuList = sysMenuService.menuList();
@@ -74,6 +79,7 @@ public class SysMenuController {
     }
     
     //上级菜单列表
+    @Auth
     @GetMapping("/parent")
     public ResultVo getParentList(){
         List<SysMenu> menuList = sysMenuService.parentList();

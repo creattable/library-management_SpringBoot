@@ -4,6 +4,7 @@ import com.alibaba.druid.util.StringUtils;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.qin.annotation.Auth;
 import com.qin.jwt.JwtUtils;
 import com.qin.utils.ResultUtils;
 import com.qin.utils.ResultVo;
@@ -33,6 +34,7 @@ public class BorrowBookController {
     private JwtUtils jwtUtils;
     
     //借阅审核(非管理借书需要审核)
+    @Auth
     @PostMapping("/applyBook")
     public ResultVo applyBook(@RequestBody BorrowBook borrowBook) {
         borrowBook.setBorrowStatus("1");
@@ -48,6 +50,7 @@ public class BorrowBookController {
     
     
     //借书
+    @Auth
     @PostMapping
     public ResultVo borrow(@RequestBody BorrowParm parm, HttpServletRequest request) {
         
@@ -68,6 +71,7 @@ public class BorrowBookController {
     
     
     //还书列表
+    @Auth
     @GetMapping("/getBorrowList")
     public ResultVo getBorrowList(ListParm parm) {
         IPage<ReturnBook> borrowList = borrowBookService.getBorrowList(parm);
@@ -75,6 +79,7 @@ public class BorrowBookController {
     }
     
     //还书(可批量)
+    @Auth
     @PostMapping("/returnBooks")
     public ResultVo returnBooks(@RequestBody List<ReturnParm> parm) {
         borrowBookService.returnBook(parm);
@@ -82,6 +87,7 @@ public class BorrowBookController {
     }
     
     //异常还书
+    @Auth
     @PostMapping("/exceptionBooks")
     public ResultVo exceptionBooks(@RequestBody ExceptionParm parm) {
         borrowBookService.exceptionBook(parm);
@@ -89,6 +95,7 @@ public class BorrowBookController {
     }
     
     //借阅查看
+    @Auth
     @GetMapping("/getLookBorrowList")
     public ResultVo getLookBorrowList(LookParm parm, HttpServletRequest request) {
         //获取token
@@ -119,6 +126,7 @@ public class BorrowBookController {
     
     
     //借书续期
+    @Auth
     @PostMapping("/addTime")
     public ResultVo addTime(@RequestBody BorrowParm parm) {
         BorrowBook borrowBook = new BorrowBook();
@@ -134,6 +142,7 @@ public class BorrowBookController {
     
     //借书待审核总数
     //如果是管理则查所有的，读者只能查自己的
+    @Auth
     @GetMapping("/getBorrowApplyCount")
     public ResultVo getBorrowApplyCount(String userType, Long userId) {
         if (userType.equals("0")) {
@@ -156,6 +165,7 @@ public class BorrowBookController {
     
     //到期待还总数
     //如果是管理则查所有的，读者只能查自己的
+    @Auth
     @GetMapping("/getBorrowReturnCount")
     public ResultVo getBorrowReturnCount(String userType, Long userId) {
         System.out.println("*************************************");

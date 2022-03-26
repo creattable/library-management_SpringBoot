@@ -1,6 +1,7 @@
 package com.qin.web.sys_books.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.qin.annotation.Auth;
 import com.qin.utils.ResultUtils;
 import com.qin.utils.ResultVo;
 import com.qin.web.sys_books.entity.BookVo;
@@ -24,6 +25,7 @@ public class SysBooksController {
     private SysBooksService sysBooksService;
     
     //新增
+    @Auth
     @PostMapping
     public ResultVo add(@RequestBody SysBooks books){
         boolean save = sysBooksService.save(books);
@@ -34,6 +36,7 @@ public class SysBooksController {
     }
     
     //编辑
+    @Auth
     @PutMapping
     public ResultVo edit(@RequestBody SysBooks books){
         boolean save = sysBooksService.updateById(books);
@@ -44,6 +47,7 @@ public class SysBooksController {
     }
     
     //删除
+    @Auth
     @DeleteMapping("/{bookId}")
     public ResultVo delete(@PathVariable("bookId") Long bookId){
         boolean remove = sysBooksService.removeById(bookId);
@@ -54,6 +58,7 @@ public class SysBooksController {
     }
     
     //列表查询
+    @Auth
     @GetMapping("/list")
     public ResultVo getList(ListParm parm){
         //执行顺序
@@ -64,6 +69,7 @@ public class SysBooksController {
     }
     
     //前十的借书图书
+    @Auth
     @GetMapping("/getHotBook")
     public ResultVo getHotBook(){
         List<BookVo> hotBook = sysBooksService.getHotBook();

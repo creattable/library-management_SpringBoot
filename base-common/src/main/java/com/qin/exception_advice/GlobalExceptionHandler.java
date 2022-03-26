@@ -23,7 +23,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(BusinessException.class)
     @ResponseBody
     public ResultVo bussinessexception(BusinessException e) {
-        return ResultUtils.error(e.getMessage(),e.getCode());
+        return ResultUtils.error(e.getMessage(),e.getCode(),e.getMessage());
     }
     
     /**
@@ -33,6 +33,6 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ResponseBody
     public ResultVo notFount(RuntimeException e) {
-        return ResultUtils.error(e.getMessage(),BusinessExceptionEnum.SERVER_ERROR.getMessage());
+        return ResultUtils.error(e.getMessage(),BusinessExceptionEnum.SERVER_ERROR.getCode(),BusinessExceptionEnum.SERVER_ERROR.getMessage());
     }
 }

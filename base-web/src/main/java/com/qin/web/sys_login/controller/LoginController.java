@@ -2,6 +2,7 @@ package com.qin.web.sys_login.controller;
 
 import com.alibaba.druid.util.StringUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.qin.annotation.Auth;
 import com.qin.jwt.JwtUtils;
 import com.qin.utils.ResultUtils;
 import com.qin.utils.ResultVo;

@@ -3,6 +3,7 @@ package com.qin.web.sys_notice.controller;
 import com.alibaba.druid.sql.visitor.functions.Now;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.qin.annotation.Auth;
 import com.qin.utils.ResultUtils;
 import com.qin.utils.ResultVo;
 import com.qin.web.sys_notice.entity.NoticeParm;
@@ -25,6 +26,7 @@ public class SysNoticeController {
     private SysNoticeService sysNoticeService;
     
     //新增
+    @Auth
     @PostMapping
     public ResultVo add(@RequestBody SysNotice sysNotice){
         sysNotice.setCreateTime(new Date());
@@ -36,6 +38,7 @@ public class SysNoticeController {
     }
     
     //编辑
+    @Auth
     @PutMapping
     public ResultVo edit(@RequestBody SysNotice sysNotice){
         boolean save = sysNoticeService.updateById(sysNotice);
@@ -46,6 +49,7 @@ public class SysNoticeController {
     }
     
     //删除
+    @Auth
     @DeleteMapping("/{noticeId}")
     public ResultVo delete(@PathVariable("noticeId") Long noticeId){
         boolean save = sysNoticeService.removeById(noticeId);
@@ -56,6 +60,7 @@ public class SysNoticeController {
     }
     
     //列表
+    @Auth
     @GetMapping("/list")
     public ResultVo getList(NoticeParm parm){
         System.out.println("-----------------------------");
@@ -64,6 +69,7 @@ public class SysNoticeController {
     }
     
     //查询前三条公告
+    @Auth
     @GetMapping("/getTopList")
     public ResultVo getTopList(){
         QueryWrapper<SysNotice> query = new QueryWrapper<>();

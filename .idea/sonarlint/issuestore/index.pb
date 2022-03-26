@@ -13,8 +13,6 @@ h
 8base-common/src/main/java/com/qin/status/StatusCode.java,5\c\5cc1e63b401cff7b6b5a3deca69df3edbc366026
 h
 8base-common/src/main/java/com/qin/utils/ResultUtils.java,0\e\0e133766034713523aa186793ff6660962069549
-k
-;base-web/src/main/java/com/qin/config/web/WebMvcConfig.java,2\6\2669afc77749f096b6461e7c0934cbaa9ef729b7
 u
 Ebase-web/src/main/java/com/qin/web/sys_role/mapper/SysRoleMapper.java,8\0\8017fa2619f8eefb4809af57f8cd1b84e53c88c4
 e
@@ -37,12 +35,8 @@ u
 Ebase-web/src/main/java/com/qin/web/book_borrow/entity/ReturnBook.java,b\5\b5c536f2edaed074b3eed917cde8b1ad024281e5
 u
 Ebase-web/src/main/java/com/qin/web/book_borrow/entity/ReturnParm.java,d\d\ddb6f347c27ea24db3839da5117b1fdb4527da1f
-~
-Nbase-common/src/main/java/com/qin/exception_advice/GlobalExceptionHandler.java,7\e\7ef4aaefae5600e1363ad070ba5e338ef354c6c3
 x
 Hbase-web/src/main/java/com/qin/web/book_borrow/entity/ExceptionParm.java,5\3\53490619512c5790dc66a40fa2f348a649db9ae6
-}
-Mbase-web/src/main/java/com/qin/web/sys_menu/controller/SysMenuController.java,d\6\d649cad18d5bad786baa662a53888ba01e70f815
 s
 Cbase-web/src/main/java/com/qin/web/book_borrow/entity/ListParm.java,0\a\0ac959a87baf2fad2aa5f4aa2d7560e79ed0c96c
 s
@@ -85,8 +79,6 @@ Kbase-web/src/main/java/com/qin/web/sys_role_menu/mapper/RoleMenuMapper.java,c\
 Vbase-web/src/main/java/com/qin/web/sys_role_menu/service/impl/RoleMenuServiceImpl.java,7\a\7a8c5c26e299adf1d7b6eebc259f2a4a51b8c0df
 r
 Bbase-web/src/main/java/com/qin/web/sys_role/entity/SaveAssign.java,1\f\1f663a3f281b46492168ac53ac3d00cb64b4f88c
-y
-Ibase-web/src/main/java/com/qin/web/sys_reader_role/entity/ReaderRole.java,c\5\c5f61415becf0ff7377a0e32960a896cda299f6d
 Å
 Qbase-web/src/main/java/com/qin/web/sys_reader_role/service/ReaderRoleService.java,4\a\4a204f6cc1525d5b34323823c06378a1450e063b
 
@@ -101,8 +93,6 @@ d
 4base-web/src/main/java/com/qin/BooksApplication.java,d\a\daafee8270979d075a5104e7c1de8d0f2af6059b
 Ü
 Vbase-web/src/main/java/com/qin/web/sys_user_role/service/impl/UserRoleServiceImpl.java,e\b\ebaf7e207325b6ddd18e33fb2b9ab4438f097ac6
-}
-Mbase-web/src/main/java/com/qin/web/sys_role/controller/SysRoleController.java,1\7\178221a6e4119a9ddb7be9f0788296ffbd7f28a6
 r
 Bbase-web/src/main/java/com/qin/web/sys_login/entity/LoginParm.java,7\e\7e9dace53490eb9cbb41ef251f96e58c30568620
 t
@@ -141,8 +131,6 @@ Mbase-web/src/main/java/com/qin/web/book_borrow/service/BorrowBookService.java,
 Vbase-web/src/main/java/com/qin/web/book_borrow/service/Impl/BorrowBookServiceImpl.java,9\1\9151af38c8b6b848d5f04994ce82a6869201672e
 {
 Kbase-web/src/main/java/com/qin/web/book_borrow/mapper/BorrowBookMapper.java,4\9\49e9d9642613b8718d3f9e8cea4e4a3b87f33edd
-|
-Lbase-web/src/main/java/com/qin/web/sys_login/controller/LoginController.java,f\c\fc2710e1ba6506b23659bd6011c8bef7199c1576
 u
 Ebase-web/src/main/java/com/qin/web/book_borrow/entity/LookBorrow.java,5\d\5df318e8f6b72ebf2f383705efafcd72cb4d6b01
 u

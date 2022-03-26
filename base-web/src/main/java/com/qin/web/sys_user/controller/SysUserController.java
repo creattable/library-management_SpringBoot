@@ -2,6 +2,7 @@ package com.qin.web.sys_user.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.qin.annotation.Auth;
 import com.qin.utils.ResultUtils;
 import com.qin.utils.ResultVo;
 import com.qin.web.sys_reader.service.SysReaderService;
@@ -38,6 +39,7 @@ public class SysUserController {
     
     
     //新增用户
+    @Auth
     @PostMapping
     public ResultVo addUser(@RequestBody SysUser user) {
         //判断账户是否被占用
@@ -63,6 +65,7 @@ public class SysUserController {
     
     
     //编辑用户
+    @Auth
     @PutMapping
     public ResultVo editUser(@RequestBody SysUser user) {
         //判断账户是否被占用
@@ -88,6 +91,7 @@ public class SysUserController {
     
     
     //删除
+    @Auth
     @DeleteMapping("/{userId}")
     public ResultVo delete(@PathVariable("userId") Long userId) {
         
@@ -100,6 +104,7 @@ public class SysUserController {
     
     
     //列表查询,因为是分页查询，所有用自定义类来处理
+    @Auth
     @GetMapping("/list")
     public ResultVo getList(PageParm parm) {
         IPage<SysUser> list = sysUserService.list(parm);
