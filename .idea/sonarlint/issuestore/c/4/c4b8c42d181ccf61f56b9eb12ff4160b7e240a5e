@@ -1,0 +1,13 @@
+
+E
+java:S18742"/Remove this use of "isEmpty"; it is deprecated.(¥‰äË
+E
+java:S18747"/Remove this use of "isEmpty"; it is deprecated.(¥‰äË
+J
+java:S1874D"/Remove this use of "isEmpty"; it is deprecated.(üÀ…ûÿÿÿÿ
+d
+java:S1128"BRemove this unused import 'java.util.prefs.BackingStoreException'.(¡·œÀıÿÿÿÿ8ßÓ¼¦ü/
+@
+java:S5411="*Use the primitive boolean expression here.(¿Ú‹Ç
+V
+java:S3516"9Refactor this method to not always return the same value.(ä®Ò8ôÓ¼¦ü/

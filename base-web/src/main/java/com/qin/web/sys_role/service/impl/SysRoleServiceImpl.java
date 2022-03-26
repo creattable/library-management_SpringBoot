@@ -75,6 +75,8 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
     
     @Override
     public AssignVo getAssignShow(AssignParm parm) {
+        System.out.println("******************************************");
+        System.out.println(parm);
         //查询当前用户的信息
         SysUser user = sysUserService.getById(parm.getUserId());
         //菜单数据

@@ -106,6 +106,7 @@ public class SysRoleController {
     @Auth
     @GetMapping("/getAssingShow")
     public ResultVo getAssingShow(AssignParm parm) {
+        System.out.println(parm+"********************************");
         AssignVo show = SysRoleService.getAssignShow(parm);
         return ResultUtils.success("查询成功", show);
     }
