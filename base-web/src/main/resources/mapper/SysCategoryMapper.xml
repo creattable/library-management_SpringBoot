@@ -3,5 +3,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.qin.web.sys_category.mapper.SysCategoryMapper">
-
+    <select id="getCategoryVo" resultType="com.qin.web.sys_category.entity.CategoryVo">
+        select c.category_name, count(b.book_id) as book_count
+        from sys_category as c
+                     left join sys_books as b
+                on b.category_id = c.category_id
+        group by c.category_id
+        order by c.order_num asc
+    </select>
 </mapper>

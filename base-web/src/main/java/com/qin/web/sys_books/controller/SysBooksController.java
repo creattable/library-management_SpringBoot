@@ -3,11 +3,14 @@ package com.qin.web.sys_books.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.qin.utils.ResultUtils;
 import com.qin.utils.ResultVo;
+import com.qin.web.sys_books.entity.BookVo;
 import com.qin.web.sys_books.entity.ListParm;
 import com.qin.web.sys_books.entity.SysBooks;
 import com.qin.web.sys_books.service.SysBooksService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @author 秦家乐
@@ -58,6 +61,13 @@ public class SysBooksController {
         System.out.println("------------------"+parm);
         IPage<SysBooks> list = sysBooksService.getList(parm);
         return ResultUtils.success("查询成功",list);
+    }
+    
+    //前十的借书图书
+    @GetMapping("/getHotBook")
+    public ResultVo getHotBook(){
+        List<BookVo> hotBook = sysBooksService.getHotBook();
+        return ResultUtils.success("查询成功",hotBook);
     
     }
     

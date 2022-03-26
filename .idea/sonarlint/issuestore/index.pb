@@ -29,12 +29,6 @@ q
 Abase-web/src/main/java/com/qin/web/sys_books/entity/SysBooks.java,a\a\aa00e2537aa3593183bf961a5f255ba05ca9d3d3
 w
 Gbase-web/src/main/java/com/qin/web/sys_category/entity/SysCategory.java,7\e\7e6ec9708ee8945be9890e2cbe1704b8eb8a43d3
-
-Obase-web/src/main/java/com/qin/web/sys_category/service/SysCategoryService.java,8\e\8e48c103dd4284c28facad8e6273b4b6c1c6af8e
-Ö
-Ubase-web/src/main/java/com/qin/web/sys_category/controller/SysCategoryController.java,5\3\5397c069ba74593c23797f750cd19b3266655c94
-à
-Xbase-web/src/main/java/com/qin/web/sys_category/service/Impl/SysCategoryServiceImpl.java,6\d\6ddf611042fa333c14c77a0b6fdbbf1356dad7f7
 }
 Mbase-common/src/main/java/com/qin/exception_advice/BusinessExceptionEnum.java,a\5\a5ef540d35b2ad78466ac00f24a368df3c2ef82e
 r
@@ -43,12 +37,6 @@ u
 Ebase-web/src/main/java/com/qin/web/book_borrow/entity/ReturnBook.java,b\5\b5c536f2edaed074b3eed917cde8b1ad024281e5
 u
 Ebase-web/src/main/java/com/qin/web/book_borrow/entity/ReturnParm.java,d\d\ddb6f347c27ea24db3839da5117b1fdb4527da1f
-y
-Ibase-web/src/main/java/com/qin/web/sys_books/service/SysBooksService.java,3\1\3108ec181638bd19d3f8df7f16135020befad97e
-Ç
-Rbase-web/src/main/java/com/qin/web/sys_books/service/Impl/SysBooksServiceImpl.java,0\5\057d3e5b6c7b8221914c029f28844eec73905d6e
-w
-Gbase-web/src/main/java/com/qin/web/sys_books/mapper/SysBooksMapper.java,d\d\ddda8ac675284fd33f71364e645cf49b82ae19bc
 ~
 Nbase-common/src/main/java/com/qin/exception_advice/GlobalExceptionHandler.java,7\e\7ef4aaefae5600e1363ad070ba5e338ef354c6c3
 x
@@ -65,8 +53,6 @@ Ibase-web/src/main/java/com/qin/web/sys_notice/mapper/SysNoticeMapper.java,3\7\
 Kbase-web/src/main/java/com/qin/web/sys_notice/service/SysNoticeService.java,b\d\bdee416058d36ed00418c22c999f9c57e9e7060d
 Ñ
 Tbase-web/src/main/java/com/qin/web/sys_notice/service/impl/SysNoticeServiceImpl.java,0\8\08bd0ff21a1f02a6c5b3fa16670c9146b8adc1c2
-Å
-Qbase-web/src/main/java/com/qin/web/sys_notice/controller/SysNoticeController.java,0\2\02774558df2739cbfe205dad401649652edcaf59
 t
 Dbase-web/src/main/java/com/qin/web/sys_notice/entity/NoticeParm.java,c\b\cbda403cbcb968484a39879176c8862f027fcded
 p
@@ -163,9 +149,3 @@ u
 Ebase-web/src/main/java/com/qin/web/book_borrow/entity/BorrowBook.java,4\7\474f5dff28e3d5827c7626bfdae2b0ca6410c7db
 u
 Ebase-web/src/main/java/com/qin/web/book_borrow/entity/BorrowParm.java,1\2\12b447c0ae5ce46c5426fc3eaa4c8b24842245b7
-
-Obase-web/src/main/java/com/qin/web/sys_books/controller/SysBooksController.java,4\5\459e3499d104a9121d1524d256ce8c62ca446aba
-Å
-Qbase-web/src/main/java/com/qin/web/sys_reader/controller/SysReaderController.java,5\5\55e156a1485b241db66fdfc58494ae2ba7c4f4e1
-É
-Sbase-web/src/main/java/com/qin/web/book_borrow/controller/BorrowBookController.java,8\9\89b22b3d45376fe38f656a3956d3f625dc2a35a4

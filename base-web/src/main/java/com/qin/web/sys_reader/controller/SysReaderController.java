@@ -110,18 +110,18 @@ public class SysReaderController {
     
     //读者总数
     @GetMapping("/getReaderCount")
-    public ResultVo getReaderCount(){
+    public ResultVo getReaderCount() {
         int count = sysReaderService.count();
-        return ResultUtils.success("查询成功",count);
+        return ResultUtils.success("查询成功", count);
     }
     
     //读者待审核总数
     @GetMapping("/getApplyReaderCount")
-    public ResultVo getApplyReaderCount(){
-        QueryWrapper<SysReader> query =new QueryWrapper<>();
-        query.lambda().eq(SysReader::getCheckStatus,"0");
+    public ResultVo getApplyReaderCount() {
+        QueryWrapper<SysReader> query = new QueryWrapper<>();
+        query.lambda().eq(SysReader::getCheckStatus, "0");
         int count = sysReaderService.count(query);
-        return ResultUtils.success("查询成功",count);
+        return ResultUtils.success("查询成功", count);
     }
     
     

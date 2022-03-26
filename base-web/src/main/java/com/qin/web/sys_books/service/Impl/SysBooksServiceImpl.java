@@ -3,11 +3,14 @@ package com.qin.web.sys_books.service.Impl;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.qin.web.sys_books.entity.BookVo;
 import com.qin.web.sys_books.entity.ListParm;
 import com.qin.web.sys_books.entity.SysBooks;
 import com.qin.web.sys_books.mapper.SysBooksMapper;
 import com.qin.web.sys_books.service.SysBooksService;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author 秦家乐
@@ -38,5 +41,10 @@ public class SysBooksServiceImpl extends ServiceImpl<SysBooksMapper, SysBooks> i
     @Override
     public int addBook(Long bookId) {
         return  this.baseMapper.addBook(bookId);
+    }
+    
+    @Override
+    public List<BookVo> getHotBook() {
+        return this.baseMapper.getHotBook();
     }
 }

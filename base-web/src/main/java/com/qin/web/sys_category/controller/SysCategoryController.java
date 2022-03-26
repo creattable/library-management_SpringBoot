@@ -3,6 +3,7 @@ package com.qin.web.sys_category.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.qin.utils.ResultUtils;
 import com.qin.utils.ResultVo;
+import com.qin.web.sys_category.entity.CategoryEcharts;
 import com.qin.web.sys_category.entity.ListCateParm;
 import com.qin.web.sys_category.entity.SysCategory;
 import com.qin.web.sys_category.service.SysCategoryService;
@@ -24,9 +25,9 @@ public class SysCategoryController {
     
     //新增
     @PostMapping
-    public ResultVo add(@RequestBody SysCategory sysCategory){
+    public ResultVo add(@RequestBody SysCategory sysCategory) {
         boolean save = sysCategoryService.save(sysCategory);
-        if(save){
+        if (save) {
             return ResultUtils.success("新增成功！");
         }
         return ResultUtils.error("新增失败");
@@ -35,9 +36,9 @@ public class SysCategoryController {
     
     //编辑
     @PutMapping
-    public ResultVo edit(@RequestBody SysCategory sysCategory){
+    public ResultVo edit(@RequestBody SysCategory sysCategory) {
         boolean save = sysCategoryService.updateById(sysCategory);
-        if(save){
+        if (save) {
             return ResultUtils.success("编辑成功！");
         }
         return ResultUtils.error("编辑失败");
@@ -45,10 +46,10 @@ public class SysCategoryController {
     
     //删除
     @DeleteMapping("{categoryId}")
-    public ResultVo delete(@PathVariable("categoryId") Long categoryId){
-    
+    public ResultVo delete(@PathVariable("categoryId") Long categoryId) {
+        
         boolean remove = sysCategoryService.removeById(categoryId);
-        if(remove){
+        if (remove) {
             return ResultUtils.success("删除成功！");
         }
         return ResultUtils.error("删除失败");
@@ -56,22 +57,27 @@ public class SysCategoryController {
     
     //查询
     @GetMapping("/list")
-    public ResultVo getList(ListCateParm parm){
+    public ResultVo getList(ListCateParm parm) {
         IPage<SysCategory> list = sysCategoryService.getList(parm);
-        return ResultUtils.success("查询成功",list);
-    
+        return ResultUtils.success("查询成功", list);
+        
     }
     
     
     //图书列表的分类，让其他(图书列表)可以完成图书分类中的查询
     @GetMapping("/cateList")
-    public ResultVo getCateList(){
+    public ResultVo getCateList() {
         List<SysCategory> list = sysCategoryService.list();
-        return ResultUtils.success("查询成功",list);
-    
+        return ResultUtils.success("查询成功", list);
     }
     
     
+    //图书分类统计
+    @GetMapping("/categoryCount")
+    public ResultVo categoryCount() {
+        CategoryEcharts categoryVo = sysCategoryService.getCategoryVo();
+        return ResultUtils.success("查询成功", categoryVo);
+    }
     
     
 }

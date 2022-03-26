@@ -2,8 +2,11 @@ package com.qin.web.sys_books.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.qin.web.sys_books.entity.BookVo;
 import com.qin.web.sys_books.entity.ListParm;
 import com.qin.web.sys_books.entity.SysBooks;
+
+import java.util.List;
 
 /**
  * @author 秦家乐
@@ -17,6 +20,9 @@ public interface SysBooksService extends IService<SysBooks> {
     
     //加库存
     int addBook(Long bookId);
+    
+    //前十的借书图书
+    List<BookVo> getHotBook();
     
     
 }

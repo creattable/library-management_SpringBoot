@@ -1,6 +1,7 @@
 package com.qin.web.sys_notice.controller;
 
 import com.alibaba.druid.sql.visitor.functions.Now;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.qin.utils.ResultUtils;
 import com.qin.utils.ResultVo;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author 秦家乐
@@ -60,5 +62,16 @@ public class SysNoticeController {
         IPage<SysNotice> list = sysNoticeService.getList(parm);
         return ResultUtils.success("查询成功",list);
     }
+    
+    //查询前三条公告
+    @GetMapping("/getTopList")
+    public ResultVo getTopList(){
+        QueryWrapper<SysNotice> query = new QueryWrapper<>();
+        query.lambda().orderByDesc(SysNotice::getCreateTime).last("limit 3");
+        List<SysNotice> list = sysNoticeService.list(query);
+        return ResultUtils.success("查询成功",list);
+    }
+    
+    
 }
 

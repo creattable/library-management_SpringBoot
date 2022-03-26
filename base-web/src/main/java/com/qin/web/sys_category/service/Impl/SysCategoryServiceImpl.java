@@ -5,11 +5,16 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.qin.web.sys_category.entity.CategoryEcharts;
+import com.qin.web.sys_category.entity.CategoryVo;
 import com.qin.web.sys_category.entity.ListCateParm;
 import com.qin.web.sys_category.entity.SysCategory;
 import com.qin.web.sys_category.mapper.SysCategoryMapper;
 import com.qin.web.sys_category.service.SysCategoryService;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author 秦家乐
@@ -36,5 +41,23 @@ public class SysCategoryServiceImpl extends ServiceImpl<SysCategoryMapper, SysCa
         
         //查询的时候，第一个传入的是分页对象，第二个传入的是查询条件
         return this.baseMapper.selectPage(page,query);
+    }
+    
+    @Override
+    public CategoryEcharts getCategoryVo() {
+        CategoryEcharts echarts = new CategoryEcharts();
+        List<CategoryVo> categoryVo = baseMapper.getCategoryVo();
+        List<String> names=new ArrayList<>();
+        List<Integer> counts = new ArrayList<>();
+        if(categoryVo.size()>0){
+            for(int i=0;i<categoryVo.size();i++){
+                names.add(categoryVo.get(i).getCategoryName());
+                counts.add(categoryVo.get(i).getBookCount());
+            }
+            echarts.setCounts(counts);
+            echarts.setNames(names);
+        }
+        
+        return echarts;
     }
 }
